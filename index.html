@@ -3,12 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Jorge A. López M. - CV Ingeniero en Sistemas</title>
-  <!-- Google Fonts para tipografía profesional y moderna -->
+  <meta name="description" content="CV de Jorge Alejandro López Márquez - Ingeniero en Sistemas Computacionales">
+  <meta name="author" content="Jorge Alejandro Lopez Marquez">
+  <title>Jorge A. López M. | Ingeniero en Sistemas - CV</title>
+  
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (gratuito) para iconos de alta calidad -->
+  
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
+    /* ========== CSS CUSTOM PROPERTIES ========== */
+    :root {
+      --color-primary: #3b82f6;
+      --color-primary-dark: #2563eb;
+      --color-dark: #0f172a;
+      --color-dark-light: #1e293b;
+      --color-gray: #475569;
+      --color-gray-light: #64748b;
+      --color-bg: #f8fafc;
+      --color-bg-dark: #f1f5f9;
+      --color-white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 25px 45px -12px rgb(0 0 0 / 0.25);
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+      --radius-lg: 2rem;
+      --transition: all 0.2s ease;
+    }
+
+    /* ========== RESET & BASE ========== */
     * {
       margin: 0;
       padding: 0;
@@ -18,31 +44,50 @@
     body {
       background: linear-gradient(145deg, #e9eef3 0%, #dce3ec 100%);
       font-family: 'Inter', sans-serif;
-      color: #1a2c3e;
-      line-height: 1.45;
+      color: var(--color-dark);
+      line-height: 1.5;
       padding: 2rem 1.5rem;
+      min-height: 100vh;
     }
 
-    /* Contenedor principal estilo tarjeta */
-    .cv-container {
+    /* ========== UTILITY CLASSES ========== */
+    .container {
       max-width: 1100px;
       margin: 0 auto;
-      background: #ffffff;
-      border-radius: 2rem;
-      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ========== CV CONTAINER ========== */
+    .cv-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
       overflow: hidden;
-      transition: all 0.2s ease;
+      transition: var(--transition);
     }
 
-    /* Header con fondo técnico / gradiente elegante */
+    /* ========== HEADER ========== */
     .header {
-      background: #0f172a;
+      background: var(--color-dark);
       padding: 2rem 2.5rem;
-      color: white;
-      border-bottom: 4px solid #3b82f6;
+      color: var(--color-white);
+      border-bottom: 4px solid var(--color-primary);
     }
 
-    .name {
+    .header__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid rgba(59, 130, 246, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    .header__name {
       font-size: 2.8rem;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -50,141 +95,176 @@
       line-height: 1.2;
     }
 
-    .badge-role {
-      display: inline-block;
-      background: rgba(59,130,246,0.2);
-      backdrop-filter: blur(4px);
-      border-radius: 40px;
-      padding: 0.3rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid rgba(59,130,246,0.5);
-      margin-bottom: 1rem;
-    }
-
-    .contact-bar {
+    .header__contact {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin-top: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: #cbd5e1;
     }
 
-    .contact-bar i {
-      width: 1.4rem;
-      color: #3b82f6;
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .contact-bar span {
-      margin-left: 0.4rem;
+    .contact-item i {
+      width: 1.25rem;
+      color: var(--color-primary);
     }
 
-    /* Layout de 2 columnas: izquierda habilidades + educación, derecha experiencia */
-    .two-columns {
+    .contact-item a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-item a:hover {
+      color: var(--color-white);
+    }
+
+    /* ========== LAYOUT ========== */
+    .cv-grid {
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 0;
     }
 
-    /* Sidebar izquierdo */
+    /* ========== SIDEBAR ========== */
     .sidebar {
-      background: #f8fafc;
+      background: var(--color-bg);
       padding: 2rem 1.8rem;
       border-right: 1px solid #e2e8f0;
     }
 
+    /* ========== MAIN CONTENT ========== */
     .main-content {
       padding: 2rem 2rem 2rem 1.8rem;
-      background: white;
+      background: var(--color-white);
     }
 
-    /* Estilos de secciones */
+    /* ========== SECTION STYLES ========== */
     .section {
       margin-bottom: 2rem;
     }
 
-    .section-title {
-      font-size: 1.2rem;
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section__title {
+      font-size: 1.125rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #0f172a;
-      border-left: 4px solid #3b82f6;
-      padding-left: 0.9rem;
-      margin-bottom: 1.2rem;
+      color: var(--color-dark);
+      border-left: 4px solid var(--color-primary);
+      padding-left: 0.875rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.625rem;
     }
 
-    .section-title i {
-      color: #3b82f6;
-      font-size: 1.2rem;
+    .section__title i {
+      color: var(--color-primary);
+      font-size: 1.125rem;
     }
 
-    /* skills chips */
+    /* ========== SKILLS ========== */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
+      gap: 0.625rem;
       margin-top: 0.5rem;
     }
 
-    .skill-chip {
-      background: white;
+    .skill-tag {
+      background: var(--color-white);
       border: 1px solid #cbd5e1;
       border-radius: 40px;
-      padding: 0.4rem 1rem;
-      font-size: 0.8rem;
+      padding: 0.375rem 1rem;
+      font-size: 0.75rem;
       font-weight: 500;
       font-family: 'JetBrains Mono', monospace;
-      transition: all 0.2s;
-      color: #1e293b;
+      transition: var(--transition);
+      color: var(--color-dark-light);
     }
 
-    .skill-chip:hover {
+    .skill-tag:hover {
       background: #eef2ff;
-      border-color: #3b82f6;
+      border-color: var(--color-primary);
       transform: translateY(-2px);
     }
 
-    /* Educación item */
-    .edu-item {
-      margin-bottom: 1.2rem;
+    /* ========== EDUCATION ========== */
+    .education__item {
+      margin-bottom: 1.25rem;
     }
 
-    .edu-title {
+    .education__title {
       font-weight: 700;
       font-size: 1rem;
-      color: #0f172a;
+      color: var(--color-dark);
     }
 
-    .edu-meta {
-      font-size: 0.8rem;
-      color: #475569;
-      margin-top: 0.2rem;
+    .education__meta {
+      font-size: 0.75rem;
+      color: var(--color-gray);
+      margin-top: 0.25rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.625rem;
       flex-wrap: wrap;
     }
 
-    .badge-current {
+    .badge {
       background: #dbeafe;
       color: #1e40af;
-      font-size: 0.7rem;
+      font-size: 0.688rem;
       font-weight: 600;
-      padding: 0.2rem 0.6rem;
+      padding: 0.188rem 0.625rem;
       border-radius: 20px;
     }
 
-    /* Experiencia laboral */
-    .job {
+    .education__detail {
+      font-size: 0.75rem;
+      margin-top: 0.375rem;
+      color: #2c3e66;
+    }
+
+    /* ========== TECH HIGHLIGHTS ========== */
+    .tech-highlight {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tech-highlight i {
+      color: var(--color-primary);
+      width: 1.25rem;
+    }
+
+    /* ========== SUMMARY ========== */
+    .summary {
+      background: var(--color-bg-dark);
+      padding: 1.125rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--color-primary);
+      line-height: 1.5;
+    }
+
+    /* ========== EXPERIENCE ========== */
+    .experience__item {
       margin-bottom: 2rem;
     }
 
-    .job-header {
+    .experience__header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -192,274 +272,376 @@
       margin-bottom: 0.5rem;
     }
 
-    .job-title {
-      font-size: 1.2rem;
+    .experience__title {
+      font-size: 1.125rem;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--color-dark);
     }
 
-    .job-company {
+    .experience__company {
       font-weight: 600;
-      color: #3b82f6;
+      color: var(--color-primary);
     }
 
-    .job-date {
-      font-size: 0.8rem;
-      background: #f1f5f9;
-      padding: 0.2rem 0.7rem;
+    .experience__date {
+      font-size: 0.75rem;
+      background: var(--color-bg-dark);
+      padding: 0.188rem 0.625rem;
       border-radius: 20px;
-      color: #334155;
+      color: var(--color-gray);
     }
 
-    .job-description {
-      margin-top: 0.6rem;
+    .experience__description {
+      margin-top: 0.625rem;
       padding-left: 0.5rem;
       border-left: 2px solid #cbd5e6;
     }
 
-    .job-description ul {
+    .experience__description ul {
       list-style: none;
     }
 
-    .job-description li {
-      margin-bottom: 0.6rem;
-      font-size: 0.9rem;
+    .experience__description li {
+      margin-bottom: 0.625rem;
+      font-size: 0.875rem;
       display: flex;
-      gap: 0.7rem;
+      gap: 0.75rem;
       align-items: baseline;
     }
 
-    .job-description li i {
-      color: #3b82f6;
-      font-size: 0.8rem;
-      width: 1.2rem;
-      margin-top: 0.2rem;
+    .experience__description li i {
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      width: 1.125rem;
+      margin-top: 0.188rem;
     }
 
-    /* Resumen profesional más técnico */
-    .summary-text {
+    /* ========== PROJECTS ========== */
+    .projects__grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: #f8fafe;
+      padding: 0.875rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateX(4px);
       background: #f1f5f9;
-      padding: 1rem 1.2rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-      border-left: 3px solid #3b82f6;
-      line-height: 1.5;
     }
 
-    hr {
-      margin: 1rem 0;
-      border: 0;
-      height: 1px;
-      background: linear-gradient(90deg, #e2e8f0, transparent);
+    .project-card__title {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
     }
 
-    /* Responsive */
+    .project-card__description {
+      font-size: 0.813rem;
+      margin-top: 0.25rem;
+      color: var(--color-gray);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      font-size: 0.688rem;
+      padding: 1rem;
+      background: var(--color-bg-dark);
+      color: var(--color-gray);
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 780px) {
       body {
         padding: 1rem;
       }
-      .two-columns {
+      
+      .cv-grid {
         grid-template-columns: 1fr;
       }
+      
       .sidebar {
         border-right: none;
         border-bottom: 1px solid #e2e8f0;
       }
+      
       .header {
         padding: 1.5rem;
       }
-      .name {
+      
+      .header__name {
         font-size: 2rem;
       }
+      
       .main-content {
         padding: 1.5rem;
       }
+      
+      .experience__header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
 
-    /* Tooltip sutil para iconos */
-    .contact-bar a {
-      color: #cbd5e1;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-bar a:hover {
-      color: white;
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.7rem;
-      padding: 1rem;
-      background: #f1f5f9;
-      color: #475569;
-      border-top: 1px solid #e2e8f0;
+    .cv-card {
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    /* ========== PRINT STYLES ========== */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .cv-card {
+        box-shadow: none;
+        border-radius: 0;
+      }
+      
+      .skill-tag:hover {
+        transform: none;
+      }
+      
+      .project-card:hover {
+        transform: none;
+      }
+      
+      .contact-item a {
+        color: var(--color-gray);
+      }
     }
   </style>
 </head>
 <body>
-<div class="cv-container">
-  <!-- Encabezado profesional -->
-  <div class="header">
-    <div class="badge-role">
-      <i class="fas fa-code"></i> Ingeniero en Sistemas Computacionales
-    </div>
-    <div class="name">Jorge Alejandro Lopez Marquez</div>
-    <div class="contact-bar">
-      <div><i class="fas fa-map-marker-alt"></i><span>Fracc. Los Encinos, Calle cholla VII 262, Ensenada</span></div>
-      <div><i class="fas fa-phone-alt"></i><span>646 386 6055</span></div>
-      <div><i class="fas fa-envelope"></i><span>lomajo552@gmail.com</span></div>
-      <div><i class="fab fa-github"></i><span>github.com/jorgelopez-dev</span></div>
-    </div>
-  </div>
-
-  <div class="two-columns">
-    <!-- Columna izquierda: habilidades + educación + herramientas clave -->
-    <div class="sidebar">
-      <!-- Habilidades de programación -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-laptop-code"></i> Competencias técnicas
+  <div class="container">
+    <div class="cv-card">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__badge">
+          <i class="fas fa-code"></i>
+          <span>Ingeniero en Sistemas Computacionales</span>
         </div>
-        <div class="skills-list">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">Java</span>
-          <span class="skill-chip">SQL</span>
-          <span class="skill-chip">VBA</span>
-          <span class="skill-chip">Power BI</span>
-          <span class="skill-chip">Power Apps</span>
-          <span class="skill-chip">Excel Avanzado</span>
-          <span class="skill-chip">Git/GitHub</span>
-          <span class="skill-chip">Análisis de Datos</span>
-          <span class="skill-chip">ETL básico</span>
-        </div>
-      </div>
-
-      <!-- Educación con perfil ingeniería -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-graduation-cap"></i> Formación
-        </div>
-        <div class="edu-item">
-          <div class="edu-title">Ingeniería en Sistemas Computacionales</div>
-          <div class="edu-meta">
-            <span><i class="fas fa-university"></i> Instituto Tecnológico de Ensenada</span>
-            <span class="badge-current">Cursando actualmente</span>
+        <h1 class="header__name">Jorge Alejandro Lopez Marquez</h1>
+        <div class="header__contact">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Fracc. Los Encinos, Calle cholla VII 262, Ensenada</span>
           </div>
-          <div style="font-size:0.8rem; margin-top:0.4rem; color:#2c3e66;">
-            <i class="fas fa-chalkboard-user"></i> Enfoque: desarrollo de software, bases de datos, arquitectura de sistemas
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>646 386 6055</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>lomajo552@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/jorgelopez-dev" target="_blank" rel="noopener noreferrer">github.com/jorgelopez-dev</a>
           </div>
         </div>
-      </div>
+      </header>
 
-      <!-- Certificaciones / destaque técnico -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-certificate"></i> Plus técnico
-        </div>
-        <div style="font-size:0.9rem; margin-bottom:0.5rem;">
-          <i class="fas fa-chart-line" style="color:#3b82f6; width:1.4rem;"></i> Automatización con Python & VBA
-        </div>
-        <div style="font-size:0.9rem; margin-bottom:0.5rem;">
-          <i class="fas fa-database" style="color:#3b82f6; width:1.4rem;"></i> Consultas SQL optimizadas
-        </div>
-        <div style="font-size:0.9rem;">
-          <i class="fas fa-cloud" style="color:#3b82f6; width:1.4rem;"></i> Power Platform: Apps + BI
-        </div>
-      </div>
-
-      <!-- Idiomas / soft skills relevantes para sistemas -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-users"></i> Habilidades blandas
-        </div>
-        <div class="skills-list">
-          <span class="skill-chip">Resolución de problemas</span>
-          <span class="skill-chip">Pensamiento analítico</span>
-          <span class="skill-chip">Liderazgo técnico</span>
-          <span class="skill-chip">Comunicación efectiva</span>
-          <span class="skill-chip">Trabajo en equipo ágil</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna principal: resumen renovado + experiencia laboral destacada con enfoque en sistemas -->
-    <div class="main-content">
-      <!-- Resumen profesional versión ingeniería sistemas -->
-      <div class="summary-text">
-        <i class="fas fa-quote-left" style="color:#3b82f6; margin-right:0.5rem;"></i> 
-        Estudiante avanzado de <strong>Ingeniería en Sistemas Computacionales</strong> en el Instituto Tecnológico de Ensenada, 
-        con sólida experiencia en <strong>análisis de datos, automatización de reportes</strong> y visualización estratégica. 
-        Apasionado por el desarrollo <strong>Python</strong> y la optimización de procesos mediante tecnología. 
-        Busco aplicar mis competencias en programación y bases de datos para construir soluciones escalables e inteligentes.
-      </div>
-
-      <!-- Experiencia Laboral con enfoque técnico (resaltando logros de ingeniería) -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-briefcase"></i> Experiencia profesional
-        </div>
-
-        <!-- Experiencia Navico Group -->
-        <div class="job">
-          <div class="job-header">
-            <div>
-              <span class="job-title">Almacenista / Analista de Datos</span>
-              <span class="job-company"> | Navico Group</span>
+      <div class="cv-grid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <!-- Technical Skills -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-laptop-code"></i>
+              Competencias técnicas
+            </h2>
+            <div class="skills-list">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">VBA</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Power Apps</span>
+              <span class="skill-tag">Excel Avanzado</span>
+              <span class="skill-tag">Git/GitHub</span>
+              <span class="skill-tag">Análisis de Datos</span>
+              <span class="skill-tag">ETL básico</span>
             </div>
-            <div class="job-date">2021 – Presente</div>
-          </div>
-          <div class="job-description">
-            <ul>
-              <li><i class="fas fa-chart-pie"></i> <strong>Análisis y gestión de reportes avanzados:</strong> Implementación de dashboards interactivos en <strong>Power BI</strong> y aplicaciones internas con <strong>Power Apps</strong>, reduciendo tiempos de consolidación de datos en un 35%.</li>
-              <li><i class="fas fa-code-branch"></i> <strong>Automatización con Excel VBA y Python:</strong> Desarrollo de macros para limpieza y transformación de datos, integrando flujos ETL semiautomáticos para inventarios críticos.</li>
-              <li><i class="fas fa-people-arrows"></i> <strong>Liderazgo técnico:</strong> Dirección de un proyecto de <strong>entrenamiento cruzado</strong> para unificar actividades de materialistas y almacenistas, mejorando la eficiencia operativa y la trazabilidad de componentes.</li>
-              <li><i class="fas fa-database"></i> <strong>Consultoría en bases de datos:</strong> Optimización de consultas SQL para reportes de stock y rotación, apoyando la toma de decisiones gerenciales.</li>
-            </ul>
-          </div>
-        </div>
+          </section>
 
-        <!-- Podemos agregar un apartado de proyectos personales para reforzar perfil ingenieril, 
-             pero se respeta la información original enriquecida -->
+          <!-- Education -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-graduation-cap"></i>
+              Formación
+            </h2>
+            <div class="education__item">
+              <div class="education__title">Ingeniería en Sistemas Computacionales</div>
+              <div class="education__meta">
+                <span><i class="fas fa-university"></i> Instituto Tecnológico de Ensenada</span>
+                <span class="badge">Cursando actualmente</span>
+              </div>
+              <div class="education__detail">
+                <i class="fas fa-chalkboard-user"></i> Enfoque: desarrollo de software, bases de datos, arquitectura de sistemas
+              </div>
+            </div>
+          </section>
+
+          <!-- Tech Highlights -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-certificate"></i>
+              Plus técnico
+            </h2>
+            <div class="tech-highlight">
+              <i class="fas fa-chart-line"></i>
+              <span>Automatización con Python & VBA</span>
+            </div>
+            <div class="tech-highlight">
+              <i class="fas fa-database"></i>
+              <span>Consultas SQL optimizadas</span>
+            </div>
+            <div class="tech-highlight">
+              <i class="fas fa-cloud"></i>
+              <span>Power Platform: Apps + BI</span>
+            </div>
+          </section>
+
+          <!-- Soft Skills -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-users"></i>
+              Habilidades blandas
+            </h2>
+            <div class="skills-list">
+              <span class="skill-tag">Resolución de problemas</span>
+              <span class="skill-tag">Pensamiento analítico</span>
+              <span class="skill-tag">Liderazgo técnico</span>
+              <span class="skill-tag">Comunicación efectiva</span>
+              <span class="skill-tag">Trabajo en equipo ágil</span>
+            </div>
+          </section>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <!-- Professional Summary -->
+          <div class="summary">
+            <i class="fas fa-quote-left" style="color: var(--color-primary); margin-right: 0.5rem;"></i> 
+            Estudiante avanzado de <strong>Ingeniería en Sistemas Computacionales</strong> en el Instituto Tecnológico de Ensenada, 
+            con sólida experiencia en <strong>análisis de datos, automatización de reportes</strong> y visualización estratégica. 
+            Apasionado por el desarrollo <strong>Python</strong> y la optimización de procesos mediante tecnología. 
+            Busco aplicar mis competencias en programación y bases de datos para construir soluciones escalables e inteligentes.
+          </div>
+
+          <!-- Work Experience -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-briefcase"></i>
+              Experiencia profesional
+            </h2>
+
+            <div class="experience__item">
+              <div class="experience__header">
+                <div>
+                  <span class="experience__title">Almacenista / Analista de Datos</span>
+                  <span class="experience__company"> | Navico Group</span>
+                </div>
+                <div class="experience__date">2021 – Presente</div>
+              </div>
+              <div class="experience__description">
+                <ul>
+                  <li>
+                    <i class="fas fa-chart-pie"></i>
+                    <span><strong>Análisis y gestión de reportes avanzados:</strong> Implementación de dashboards interactivos en <strong>Power BI</strong> y aplicaciones internas con <strong>Power Apps</strong>, reduciendo tiempos de consolidación de datos en un 35%.</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-code-branch"></i>
+                    <span><strong>Automatización con Excel VBA y Python:</strong> Desarrollo de macros para limpieza y transformación de datos, integrando flujos ETL semiautomáticos para inventarios críticos.</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-people-arrows"></i>
+                    <span><strong>Liderazgo técnico:</strong> Dirección de un proyecto de <strong>entrenamiento cruzado</strong> para unificar actividades de materialistas y almacenistas, mejorando la eficiencia operativa y la trazabilidad de componentes.</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-database"></i>
+                    <span><strong>Consultoría en bases de datos:</strong> Optimización de consultas SQL para reportes de stock y rotación, apoyando la toma de decisiones gerenciales.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Projects -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-microchip"></i>
+              Proyectos de ingeniería
+            </h2>
+            <div class="projects__grid">
+              <div class="project-card">
+                <div class="project-card__title">
+                  <i class="fab fa-python"></i> Sistema de análisis predictivo (Python + SQLite)
+                </div>
+                <div class="project-card__description">
+                  Prototipo para predecir patrones de demanda utilizando pandas y scikit-learn, en desarrollo como proyecto académico.
+                </div>
+              </div>
+              <div class="project-card">
+                <div class="project-card__title">
+                  <i class="fas fa-chart-simple"></i> Dashboard de KPIs con Power BI & APIs
+                </div>
+                <div class="project-card__description">
+                  Extracción de datos desde fuentes SQL Server, visualización de indicadores en tiempo real para el área logística.
+                </div>
+              </div>
+              <div class="project-card">
+                <div class="project-card__title">
+                  <i class="fas fa-cubes"></i> Automatización de inventarios con Power Apps y SharePoint
+                </div>
+                <div class="project-card__description">
+                  Aplicación low-code que redujo errores de registro manual en un 40% en el equipo de almacén.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Complementary Education -->
+          <section class="section">
+            <h2 class="section__title">
+              <i class="fas fa-laptop"></i>
+              Formación complementaria
+            </h2>
+            <div class="skills-list">
+              <span class="skill-tag" style="background: #eef2ff;">Python para Data Science</span>
+              <span class="skill-tag" style="background: #eef2ff;">SQL Server: consultas avanzadas</span>
+              <span class="skill-tag" style="background: #eef2ff;">Power BI Desktop (PL-300)</span>
+              <span class="skill-tag" style="background: #eef2ff;">Git & Control de versiones</span>
+            </div>
+          </section>
+        </main>
       </div>
 
-      <!-- Proyectos destacados (añadido para potenciar perfil de sistemas) -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-microchip"></i> Proyectos de ingeniería
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="background:#F8FAFE; padding:0.8rem; border-radius:16px;">
-            <div style="font-weight:700;"><i class="fab fa-python"></i> Sistema de análisis predictivo (Python + SQLite)</div>
-            <div style="font-size:0.85rem; margin-top:0.2rem;">Prototipo para predecir patrones de demanda utilizando pandas y scikit-learn, en desarrollo como proyecto académico.</div>
-          </div>
-          <div style="background:#F8FAFE; padding:0.8rem; border-radius:16px;">
-            <div style="font-weight:700;"><i class="fas fa-chart-simple"></i> Dashboard de KPIs con Power BI & APIs</div>
-            <div style="font-size:0.85rem; margin-top:0.2rem;">Extracción de datos desde fuentes SQL Server, visualización de indicadores en tiempo real para el área logística.</div>
-          </div>
-          <div style="background:#F8FAFE; padding:0.8rem; border-radius:16px;">
-            <div style="font-weight:700;"><i class="fas fa-cubes"></i> Automatización de inventarios con Power Apps y SharePoint</div>
-            <div style="font-size:0.85rem; margin-top:0.2rem;">Aplicación low-code que redujo errores de registro manual en un 40% en el equipo de almacén.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Educación formal extra (en caso de cursos) pero mantenemos coherencia -->
-      <div class="section">
-        <div class="section-title">
-          <i class="fas fa-laptop"></i> Formación complementaria
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-          <span class="skill-chip" style="background:#eef2ff;">Python para Data Science</span>
-          <span class="skill-chip" style="background:#eef2ff;">SQL Server: consultas avanzadas</span>
-          <span class="skill-chip" style="background:#eef2ff;">Power BI Desktop (PL-300)</span>
-          <span class="skill-chip" style="background:#eef2ff;">Git & Control de versiones</span>
-        </div>
-      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <i class="fas fa-terminal"></i> Disponible para oportunidades como desarrollador Python / Analista de Sistemas • Actualización continua en arquitectura de software
+      </footer>
     </div>
   </div>
-  <footer>
-    <i class="fas fa-terminal"></i> Disponible para oportunidades como desarrollador Python / Analista de Sistemas • Actualización continua en arquitectura de software
-  </footer>
-</div>
 </body>
 </html>
